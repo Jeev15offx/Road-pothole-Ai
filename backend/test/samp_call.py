@@ -8,7 +8,7 @@ client = InferenceHTTPClient(
 result = client.run_workflow(
     workspace_name="babu-4meph",
     workflow_id="find-potholes",
-    images={"image": "path/to/image.jpg"},
+    images={"image": "Road-pothole-Ai/backend/test/img-79.jpg"},
     use_cache=True
 )
 
