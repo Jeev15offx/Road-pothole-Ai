@@ -1,19 +1,14 @@
+from inference_sdk import InferenceHTTPClient
 import os
-import requests
+
+client = InferenceHTTPClient(
+    api_url="https://detect.roboflow.com",
+    api_key=os.getenv("ROBOFLOW_API_KEY")
+)
 
 def predict_image(image_path: str):
-
-    url = "https://api.roboflow.com/workflows/babu-4meph/find-potholes/3"
-
-    params = {
-        "api_key": os.getenv("ROBOFLOW_API_KEY")
-    }
-
-    with open(image_path, "rb") as f:
-        response = requests.post(
-            url,
-            params=params,
-            files={"file": f}
-        )
-
-    return response.json()
+    result = client.infer(
+        image_path,
+        model_id="Pothole-Detection/2"  # replace with your actual model/version
+    )
+    return result
