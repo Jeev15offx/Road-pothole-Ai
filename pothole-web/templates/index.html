@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pothole Detection AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🚧 Pothole Detection AI</h1>
+    <p class="subtitle">Upload a road image to detect significant potholes</p>
+
+    <form method="POST" enctype="multipart/form-data" class="upload-card">
+
+        <label class="upload-area">
+            <input type="file" name="image" required>
+            <span>📂 Drag & Drop or Click to Upload</span>
+        </label>
+
+        <button type="submit">Analyze Image</button>
+
+    </form>
+
+    {% if result %}
+    <div class="result-card">
+        <h2>Result</h2>
+        <p class="result-text">{{ result }}</p>
+    </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
