@@ -1,14 +1,13 @@
 from inference_sdk import InferenceHTTPClient
-import os
 
 client = InferenceHTTPClient(
     api_url="https://detect.roboflow.com",
-    api_key=os.getenv("ROBOFLOW_API_KEY")
+    api_key="YOUR_NEW_API_KEY"  # paste your NEW key here
 )
 
-def predict_image(image_path: str):
+def predict_image(image_path):
     result = client.infer(
         image_path,
-        model_id="Pothole-Detection/2"  # replace with your actual model/version
+        model_id="pothole-detection-irs11/2"
     )
     return result
