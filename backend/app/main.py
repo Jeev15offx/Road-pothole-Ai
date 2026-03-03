@@ -1,6 +1,11 @@
 from fastapi import FastAPI
 from app.routes.prediction import router as prediction_router
 
+from app.routes import detect
+
+app = FastAPI(title="Road Pothole AI API")
+
+app.include_router(detect.router)
 from dotenv import load_dotenv
 load_dotenv()
 
